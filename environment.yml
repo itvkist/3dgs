@@ -1,4 +1,5 @@
-name: gaussian_splatting
+# name: 3dgs
+prefix: /home/coder/envs/3dgs
 channels:
   - pytorch
   - conda-forge
@@ -12,6 +13,7 @@ dependencies:
   - torchaudio=0.12.1
   - torchvision=0.13.1
   - tqdm
+  - colmap
   - pip:
     - submodules/diff-gaussian-rasterization
     - submodules/simple-knn
