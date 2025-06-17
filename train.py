@@ -10,6 +10,7 @@
 #
 
 import os
+from functools import reduce
 import torch
 from random import randint
 from utils.loss_utils import l1_loss, ssim
@@ -195,7 +196,10 @@ def prepare_output_and_logger(args):
             unique_str=os.getenv('OAR_JOB_ID')
         else:
             unique_str = str(uuid.uuid4())
-        args.model_path = os.path.join("./output/", unique_str[0:10])
+        # args.model_path = os.path.join("./output/", unique_str[0:10])
+
+        project_path = reduce(lambda p, _: os.path.dirname(p), range(2), args.source_path)
+        args.model_path = os.path.join(project_path, 'output')
         
     # Set up output folder
     print("Output folder: {}".format(args.model_path))
